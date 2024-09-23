@@ -1,0 +1,57 @@
+{
+  "name": "@builtwithjavascript/use-postbox",
+  "version": "1.0.0",
+  "description": "Exposes a postbox on the top window.",
+  "author": "builtwithjavascript",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/builtwithjavascript/use-postbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/builtwithjavascript/use-postbox/issues"
+  },
+  "homepage": "https://github.com/builtwithjavascript/use-postbox#readme",
+  "keywords": [
+    "postbox, events, pub, sub, utils, helpers, javascript"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build-types": "tsc src/index.ts --esModuleInterop --declaration --emitDeclarationOnly --outDir dist",
+    "build": "tsc --esModuleInterop && vite build && npm run build-types",
+    "pub": "npm publish --access public",
+    "test": "TESTING=true vitest run",
+    "test-watch": "TESTING=true vitest watch",
+    "pretty": "prettier -w \"./src/**/*.ts\"",
+    "version-patch": "npm run pretty && npm version patch -m \"Patch version\"",
+    "preversion": "npm run test",
+    "version": "npm run build",
+    "postversion": "git push"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.7"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/use-postbox.es.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/use-postbox.umd.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/use-postbox.umd.js",
+  "module": "./dist/use-postbox.es.js"
+}
